@@ -5,7 +5,7 @@ import { frontRoutes } from "../config/routes/frontRoutes";
 
 const baseQuery = fetchBaseQuery({
   // baseUrl: "http://localhost:4000/api/",
-  baseUrl: "https://bk-17.onrender.com/api/",
+  baseUrl: "https://brilliant-cobbler-ec51b4.netlify.app/api/",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth?.accessToken;
