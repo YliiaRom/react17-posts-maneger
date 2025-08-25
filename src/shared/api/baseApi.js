@@ -5,7 +5,7 @@ import { frontRoutes } from "../config/routes/frontRoutes";
 
 const baseQuery = fetchBaseQuery({
   // baseUrl: "http://localhost:4000/api/",
-  baseUrl: "https://brilliant-cobbler-ec51b4.netlify.app/api/",
+  baseUrl: "https://bk-17.onrender.com/api/",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth?.accessToken;
@@ -19,22 +19,28 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 401) {
-    // Access token закінчився, пробуємо оновити
-    const refreshResult = await baseQuery(
-      { url: apiRoutes.auth.refresh, method: "POST" },
-      { ...api, endpoint: "refreshToken" },
-      extraOptions
-    );
+    try {
+      // Access token закінчився, пробуємо оновити
+      const refreshResult = await baseQuery(
+        { url: apiRoutes.auth.refresh, method: "POST" },
+        { ...api, endpoint: "refreshToken" },
+        extraOptions
+      );
 
-    if (refreshResult.data) {
-      // Оновлюємо токен у state
-      api.dispatch(setCredentials(refreshResult.data));
-      // Повторюємо оригінальний запит з новим токеном
-      result = await baseQuery(args, api, extraOptions);
-    } else {
-      // Оновлення токена не вдалось — логаут
+      if (refreshResult.data) {
+        // Оновлюємо токен у state
+        api.dispatch(setCredentials(refreshResult.data));
+        // Повторюємо оригінальний запит з новим токеном
+        result = await baseQuery(args, api, extraOptions);
+      } else {
+        // Оновлення токена не вдалось — логаут
+        api.dispatch(logout());
+        window.location.href = frontRoutes.pages.LoginPage.navigationPath; // Перенаправлення
+      }
+    } catch (err) {
       api.dispatch(logout());
-      window.location.href = frontRoutes.pages.LoginPage.navigationPath; // Перенаправлення
+      window.location.href = frontRoutes.pages.LoginPage.navigationPath;
+      console.log(err);
     }
   }
 
