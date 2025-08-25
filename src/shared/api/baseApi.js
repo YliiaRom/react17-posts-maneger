@@ -22,7 +22,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     // Access token закінчився, пробуємо оновити
     const refreshResult = await baseQuery(
       { url: apiRoutes.auth.refresh, method: "POST" },
-      api,
+      { ...api, endpoint: "refreshToken" },
       extraOptions
     );
 
