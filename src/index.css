@@ -1,0 +1,666 @@
+@import "tailwindcss";
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #447f98;
+  background-color: #373434;
+  margin: 0 auto;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mainWrap {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 0 auto;
+}
+.mainNav {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  border-radius: 5px;
+  margin: 0 auto;
+  box-shadow: 0px 5px 15px #222121a7;
+}
+/* ========page */
+.loginPageWrap {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5px;
+}
+/* =====task */
+.taskWrap {
+  width: 100%;
+  height: fit-content;
+  padding: 40px;
+  perspective: 5000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.mainTaskCard {
+  transform-style: preserve-3d;
+  position: relative;
+  height: auto;
+  height: 400px;
+
+  max-width: 250px;
+
+  aspect-ratio: 2 / 1;
+  transition: 2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  border-radius: 10px;
+}
+.frontCard,
+.backCard {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 30px;
+  word-wrap: break-word;
+  width: 100%;
+  height: 100%;
+  height: auto;
+  overflow-y: auto;
+}
+
+.frontCard {
+  background-color: #d6ebf3;
+  background-color: rgb(98, 155, 182);
+  color: rgb(71, 41, 1);
+  box-shadow: inset -10px -10px 10px #447f98, inset -30px -30px 30px #447f98,
+    inset 15px 11px 10px #b9d8e131, inset 30px 30px 70px #b9d8e183,
+    -2px -3px 1px #ffffffb9, 5px 5px 10px #170404;
+  border: 2px solid #9999997e;
+}
+.mainTaskCard .backCard {
+  font-size: 1em;
+  word-wrap: break-word;
+  background-color: #99def9;
+  background-color: #447f98;
+  color: #d6ebf3;
+  color: #bbd7e1;
+  transform: rotateY(180deg);
+  box-shadow: inset -10px -10px 10px #011e2b7b, inset -30px -30px 30px #447f98,
+    inset 10px 11px 10px rgba(98, 155, 182, 0.804),
+    inset 30px 30px 70px rgba(98, 155, 182, 0.474),
+    -2px -3px 1px rgb(98, 155, 182), 5px 5px 10px #170404;
+  white-space: normal; /* дозволяє перенос */
+  /* word-break: break-word; переносить довгі слова */
+  /* overflow-wrap: anywhere; */
+}
+.backCard p {
+  padding: 10px 15px;
+  white-space: pre-wrap; /* зберігає пробіли/переноси */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  backdrop-filter: blur(32px);
+  border-radius: 10px;
+  box-shadow: -2px -2px 1px #ffffff13, 2px 3px 5px #0000002e;
+}
+
+.mainTaskCard:hover {
+  transform: rotateY(180deg);
+  z-index: 100;
+}
+
+.accent {
+  /* letter-spacing: 1px; */
+  font-weight: 600;
+  color: orange;
+  color: rgba(255, 166, 0, 0.871);
+  color: orange;
+
+  text-shadow: 0px 1px 1px #000000;
+}
+
+/* #447f98, rgb(98, 155, 182), #b9d8e1, #d6ebf3, #dadee1, #373434, #373434, #ffa500*/
+/* =============================nav-bar==== */
+.mainNavBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.mainNavBar li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 3px;
+  box-shadow: -2px -2px 3px #070505, 2px 2px 3px #070505, 2px 2px 5px #070505,
+    6px 6px 13px #00000070, -5px -5px 10px #7c74745b, -2px -2px 3px #070505,
+    10px 10px 30px #222020, inset -5px -5px 10px #050c0f95,
+    inset 5px 5px 10px #b9d8e135;
+}
+.accentNav {
+  color: #d6ebf3db;
+}
+
+/* #447f98, rgb(98, 155, 182), #b9d8e1, #d6ebf3, #dadee1, #373434, #ffa500, #373434*/
+/* --------------footer */
+footer {
+  padding: 30px;
+}
+.mainWrap main {
+  min-height: 50vh;
+}
+/* -------form login */
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 30px 20px 30px;
+  /* max-width: 500px; */
+  box-shadow: -8px -8px 16px #5251512d, 8px 8px 16px #00000080,
+    inset 10px 10px 10px #99999911;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+.formLogin label {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.formLogin input {
+  border: 1px solid rgb(98, 155, 182);
+  border-radius: 5px;
+  padding: 1em 2em;
+  box-shadow: -2px -2px 3px #99999910, 2px 2px 3px #00000076;
+}
+
+/* #447f98, rgb(98, 155, 182), #b9d8e1, #d6ebf3, #dadee1, #373434, #ffa500, #373434*/
+
+.formLoginButton1 {
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-shadow: 0px 1px 1px #060000;
+  width: 100%;
+  background: radial-gradient(circle, #e0f6ff, #373434, #373434, #373434);
+  background: radial-gradient(
+    circle,
+    rgb(98, 155, 182),
+    rgb(98, 155, 182),
+    rgb(98, 155, 182),
+    #37343468,
+    rgb(98, 155, 182),
+    #010101bc,
+    #01010152,
+    #01010118,
+    #373434,
+    #373434
+  );
+  padding: 5em 1em;
+  border: 1px solid #99989810;
+  border-radius: 999px;
+  color: #2a2c2d;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formLoginButton {
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  text-shadow: 0px 1px 3px #0a0101;
+  text-shadow: 0px 2px 1px #0a0101;
+  text-shadow: 0px 1px 1px #0a0101;
+  width: 100%;
+  background: radial-gradient(circle, #e0f6ff, #272424);
+
+  background: radial-gradient(circle, rgb(26, 38, 44) 10%, #012731 100%);
+  background: radial-gradient(circle, #def7fe 10%, #000c11 100%);
+
+  border: 1px solid #99989819;
+  border-radius: 999px;
+
+  color: #085b7e;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 10px #0000006b, 5px -5px 10px #5752524d,
+    inset -10px -10px 10px #00000044, inset 5px 5px 3px #f8f1f1b3,
+    inset -10px -10px 13px #1a1313;
+  z-index: 1;
+  cursor: pointer;
+}
+.formLogin button:hover {
+  background: radial-gradient(circle, #447f98 10%, #000c11 100%);
+  color: #ffa6006c;
+}
+/* #447f98, rgb(98, 155, 182), #b9d8e1, #d6ebf3, #dadee1, #373434, #ffa500, #373434*/
+.formLoginButton2 {
+  position: relative;
+  width: 100%;
+  border: 1px solid #99989810;
+  border-radius: 999px;
+  color: #2a2c2d;
+  transition: 0.3s;
+  color: #002534;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 2em;
+  box-shadow: 5px 5px 10px #0000006b, -5px -5px 10px #575252;
+}
+.formLoginButton3 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 1em 2em; */
+  width: 100%;
+  border: 1px solid #99989810;
+  border-radius: 999px;
+  background-color: #7170702e;
+  box-shadow: 5px 5px 10px #0000006b, -5px -5px 10px #575252;
+  backdrop-filter: blur(20px);
+  z-index: 1;
+}
+.formLoginButton::before,
+.formLoginButton3::before {
+  content: "";
+  position: absolute;
+  top: -200%;
+  left: 24%;
+  width: 150%;
+  height: 400%;
+  /* background-color: #ef0303; */
+  pointer-events: none;
+
+  background-image: url("/leaves.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transform: rotate(-168deg);
+  z-index: -1;
+}
+.textBtnLogin {
+  content: "";
+  /* position: absolute;
+  inset: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  width: 100%;
+  height: auto;
+  padding: 1em 2em;
+  background-color: #ffffff15;
+  backdrop-filter: blur(2px);
+  z-index: 2;
+  box-shadow: 5px 5px 10px #0000006b, -5px -5px 10px #5752524d,
+    inset -10px -10px 10px #00000044, inset 5px 5px 3px #181717b3,
+    inset 10px 10px 13px #1a1313;
+}
+/* ----------login page */
+.loginPageWrap {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.loginPageLogoBox {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 100px;
+  min-width: 100px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  z-index: -1;
+}
+/* ============userInfo */
+.userInfoWrap {
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  box-shadow: inset -2px -2px 5px #45444437, inset -10px -10px 10px #46444460,
+    inset 2px 3px 3px #00000099;
+  width: 100%;
+  border-radius: 3px;
+}
+.userInfoWrap button {
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  box-shadow: -2px -2px 3px #ffffff38, 2px 3px 3px #00000057;
+  border-radius: 5px;
+}
+/* -----------main menu */
+.mainNavWrapper {
+  width: 100%;
+  display: flex;
+  padding: 10px 15px;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0px 15px 15px #222121d9;
+}
+.mainNav {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  /* width: 100%; */
+  border-radius: 5px;
+  margin: 0 auto;
+  box-shadow: 0px 5px 15px #f702020a;
+}
+.mainLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 3px;
+  box-shadow: -2px -2px 3px #070505, 2px 2px 3px #070505, 2px 2px 5px #070505,
+    6px 6px 13px #00000070, -5px -5px 10px #7c74745b, -2px -2px 3px #070505,
+    10px 10px 30px #222020, inset -5px -5px 10px #050c0f95,
+    inset 5px 5px 10px #b9d8e135;
+}
+.inBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 3px;
+  box-shadow: -2px -2px 3px #070505, 2px 2px 3px #070505, 2px 2px 5px #070505,
+    6px 6px 13px #00000070, -5px -5px 10px #7c74745b, -2px -2px 3px #070505,
+    10px 10px 30px #222020, inset -5px -5px 10px #050c0f95,
+    inset 5px 5px 10px #b9d8e135;
+  color: #b9d8e1;
+}
+
+/* ---------label */
+@media (max-width: 425px) {
+  .mainNavWrapper {
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: flex-end;
+  }
+}
+/* -------------------------userItem */
+.descriptions p {
+  padding: 10px;
+  box-shadow: -2px -2px 3px #99999922, 3px 3px 6px #000;
+  margin-bottom: 10px;
+  border-radius: 3px;
+
+  background-color: rgba(0, 0, 0, 0.3);
+  background: radial-gradient(circle, #ffffff07 50%, #00000063);
+  backdrop-filter: blur(20px);
+}
+.userItem {
+  padding: 10px;
+  box-shadow: -2px -2px 3px #99999922, 3px 3px 6px #000;
+  margin-bottom: 10px;
+  border-radius: 3px;
+
+  background-color: rgba(0, 0, 0, 0.3);
+  background: radial-gradient(circle, #ffffff07 50%, #00000063);
+  backdrop-filter: blur(20px);
+}
+/* -------btn pagination */
+.btnPagination {
+  max-width: 100px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 20px;
+  box-shadow: -5px -5px 10px #434242, 5px 5px 10px #000,
+    inset 5px 5px 10px #ffa6006e, inset -5px -5px 10px#271900;
+  border-radius: 5px;
+  color: #ffa500;
+  transition: 0.3s;
+}
+.btnPagination:hover {
+  box-shadow: -3px -3px 10px #484747, 3px 3px 10px #000000d3,
+    inset 5px 5px 10px #ffa600df, inset -5px -5px 15px#0e090034,
+    inset -5px -5px 15px#392706;
+}
+/* ------------------postCard */
+.postCard {
+  /* background-color: #d6ebf3; */
+
+  padding: 10px 25px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  color: rgb(98, 155, 182);
+  box-shadow: -1px -1px 1px #85848169, 12px 12px 24px #0000009b;
+}
+.postCard h2 {
+  color: #ffa500;
+  color: #ffa600ae;
+
+  letter-spacing: 0.6px;
+
+  text-shadow: 0px 1px 0px #0d0000, 0px 2px 0px #000;
+  font-weight: 700;
+}
+
+.postCard button {
+  padding: 10px 20px;
+  box-shadow: -2px -2px 5px #9999990a, 2px 2px 5px #000,
+    -6px -6px 12px rgba(200, 231, 246, 0.031), 8px 8px 16px #0000005b;
+
+  margin-right: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border-top: 1px solid #99999944;
+  border-left: 2px solid #447f9827;
+  transition: 0.3s;
+}
+.postCard button:hover {
+  color: #b9d8e1;
+  box-shadow: -2px -2px 3px #9999990a, 2px 2px 3px #000,
+    inset -10px -10px 20px #ffa600f6, inset 10px 10px 20px #ffa600fc;
+}
+
+.postListWrapper .postListPaginationBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.postListWrapper .postListPaginationBox button {
+  max-width: 100px;
+  display: inline-flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 20px;
+  box-shadow: -5px -5px 10px #434242, 5px 5px 10px #000,
+    inset 5px 5px 10px #ffa6006e, inset -5px -5px 10px#271900;
+  border-radius: 5px;
+  color: #ffa500;
+  transition: 0.3s;
+}
+/* -----------formComment */
+.commentWrap {
+  padding: 20px 15px;
+  border-top: 2px dotted #d6ebf3;
+  background-color: #b9d8e1;
+  background-color: #fff;
+
+  border-radius: 10px 10px 3px 3px;
+  margin-bottom: 10px;
+}
+.formComment {
+  padding: 20px 10px;
+  box-shadow: -2px -2px 1px #99999969, 2px 2px 3px #000;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.commentItemBox div {
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 10px;
+  background-color: #d6ebf3;
+  color: #447f98;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.commentItemBox div button {
+  max-height: 50px;
+
+  box-shadow: -2px -2px 3px #447f98, -5px -5px 5px #ffffff86,
+    3px 3px 3px rgba(98, 155, 182, 0.521), 3px 3px 4px rgb(98, 155, 182),
+    6px 6px 13px rgb(98, 155, 182), inset 10px 10px 10px #e2f0f5,
+    inset -10px -10px 10px rgba(98, 155, 182, 0.226);
+  box-shadow: -2px -2px 3px #447f98, -5px -5px 5px #ffffff86, 3px 3px 3px#447f98,
+    5px 5px 5px #f5f6f7, inset 10px 10px 10px #e2f0f5,
+    inset -10px -10px 10px rgba(98, 155, 182, 0.226);
+  border-radius: 999px;
+  transition: 0.3s;
+}
+
+.commentItemBox div button:hover {
+  background-color: rgba(254, 167, 37, 0.988);
+  box-shadow: -2px -2px 3px #447f98, -5px -5px 5px #ffffff86, 3px 3px 3px#447f98,
+    5px 5px 5px #f5f6f7, inset 10px 10px 10px #f8a602,
+    inset -10px -10px 10px rgb(153, 115, 1);
+}
+.formComment textarea {
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: -2px -2px 1px #99999969, 2px 2px 3px #000;
+  background-color: #d6ebf3;
+  color: #000;
+  margin-bottom: 20px;
+}
+.formComment button {
+  border-radius: 999px;
+  position: relative;
+  width: 100%;
+
+  font-weight: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding: 1em 2em;
+
+  border: 1px solid #99989810;
+  border-radius: 999px;
+
+  border-top: 2px solid #99999929;
+  background: radial-gradient(circle, #ffa600, #845002, #231600);
+
+  box-shadow: 5px 5px 6px #00000046, 0px 2px 0px #414040a4, -5px -5px 5px #fff;
+  border: 2px solid #999999a1;
+
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.formComment button:hover {
+}
+
+.newCommentBtn {
+  position: relative;
+  width: 100%;
+
+  font-weight: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding: 1em 2em;
+
+  border: 1px solid #99989810;
+  border-radius: 999px;
+
+  border-top: 2px solid #99999929;
+  background: radial-gradient(circle, #ffa600, #845002, #231600);
+
+  box-shadow: 5px 5px 10px #000000a9, -5px -5px 10px #57525242;
+
+  color: #013a4a;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newCommentBtn:hover {
+  background: radial-gradient(circle, #427daa, #076e85, #000e14);
+  color: #013a4a;
+}
+h3 {
+  color: #ffa60062;
+}
+.titleDecor {
+  background: linear-gradient(90deg, #447f98, rgb(168, 211, 231), #447f98);
+  margin-bottom: 20px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.formComment button:hover {
+  background: radial-gradient(circle, #89e0f4, #20cbf1, #000e14);
+  box-shadow: 2px 2px 3px #00000094, inset 10px 10px 10px #0000005b,
+    inset -10px -10px 10px #447f98;
+}
+/* #447f98, rgb(98, 155, 182), #b9d8e1, #d6ebf3, #dadee1, #373434, #ffa500, #373434*/
